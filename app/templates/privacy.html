@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy | Atherton Construction Company{% endblock %}
+{% block meta_description %}How Atherton Construction Company collects, uses, stores and protects the personal information submitted through this website.{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">WEBSITE INFORMATION</p><h1>Privacy <em>policy.</em></h1><p>How Atherton Construction Company collects, uses and protects the personal information you share with us through this website.</p></div></section>
+<section class="section-pad"><div class="container prose policy">
+<p class="policy-meta">Last updated: November 2026</p>
+<p>Atherton Construction Company ("Atherton", "we", "us") respects your privacy. This policy explains what personal information we collect through this website, why we collect it, how it is stored, who can see it, and the choices you have. By using the website and submitting our forms you acknowledge this policy.</p>
+
+<h2>1. Who we are</h2>
+<p>Atherton Construction Company is a construction company offering construction, electrical, renovation, painting, plumbing and roofing services.{% if config.COMPANY_ADDRESS %} Our address is {{ config.COMPANY_ADDRESS }}.{% endif %} Contact details for privacy questions are in section 11.</p>
+
+<h2>2. Information we collect</h2>
+<p>We only collect the information you choose to give us:</p>
+<ul>
+<li><strong>Contact form:</strong> your full name, email address, phone number (optional), company name (optional) and your message.</li>
+<li><strong>Quotation request form:</strong> the details above plus project location, project type, estimated budget range, expected start date, a description of the work, and any plan or reference document you choose to attach (PDF, image, DOC or DOCX).</li>
+<li><strong>Technical information:</strong> like most websites, our web server may record technical data such as your IP address, browser type and the pages requested. We use this only to keep the site running securely.</li>
+</ul>
+<p>Please do not include sensitive personal information (such as identity numbers or bank details) in your message or attachments. We do not need it to respond to an enquiry.</p>
+
+<h2>3. How we use your information</h2>
+<ul>
+<li>To read, review and respond to your enquiry or quotation request.</li>
+<li>To follow up with you about the project you described, using the contact details you provided.</li>
+<li>To prepare quotations, estimates and project plans you ask for.</li>
+<li>To keep the website secure and prevent misuse.</li>
+</ul>
+<p>We do not sell your personal information, and we do not use it for unrelated marketing without your agreement.</p>
+
+<h2>4. Where your information is stored and who can see it</h2>
+<p>Form submissions are saved in the website's database. Attachments are stored privately on the server and are not publicly accessible through the website. Only authorised Atherton administrators who sign in to the admin area can view enquiries and download attachments.</p>
+<p>When a new enquiry arrives we may send a notification email to a company mailbox. That email contains the details you submitted so the team can respond promptly.</p>
+
+<h2>5. Sharing your information</h2>
+<p>We share personal information only when it is needed to deal with your enquiry or when the law requires it, for example:</p>
+<ul>
+<li>with our own staff and trusted contractors or suppliers who need it to price or carry out the work you asked about;</li>
+<li>with service providers who host the website or deliver our email, who may only use it to provide those services to us;</li>
+<li>with authorities or professional advisers where we are legally required or entitled to do so.</li>
+</ul>
+
+<h2>6. Cookies</h2>
+<p>This website uses only essential cookies. A session cookie keeps administrators signed in, and a security token protects forms from forged submissions. We do not use advertising or tracking cookies, and we do not run analytics that profile visitors.</p>
+
+<h2>7. Third-party services</h2>
+<p>Some features load content from other providers, which means your browser connects to them and they can see your IP address:</p>
+<ul>
+<li><strong>Google Fonts</strong> supplies the typefaces used on the site.</li>
+<li><strong>Unsplash</strong> supplies some of the background photography.</li>
+<li><strong>Facebook</strong> (Meta): the Facebook button and links take you to our Facebook page. Once you leave this website, Facebook handles your information under its own terms and privacy policy, and may use its own cookies.</li>
+<li><strong>WhatsApp</strong> (Meta): the WhatsApp button and links open a chat with us in WhatsApp. If you use it, your messages and phone number are handled under WhatsApp's own terms and privacy policy, not this one.</li>
+</ul>
+<p>Telephone links open your phone's dialler and are handled by your device and network provider.</p>
+
+<h2>8. How long we keep your information</h2>
+<p>We keep enquiries and attachments only for as long as needed to respond to you, to prepare and deliver any agreed work, and to keep reasonable business and legal records. When information is no longer needed we delete it or remove the details that identify you.</p>
+
+<h2>9. How we protect your information</h2>
+<p>We take reasonable steps to protect personal information, including password-protected administrator access, hashed passwords, protection against forged form submissions, restrictions on the types and size of files that can be uploaded, and private storage of attachments. No website or online transmission can be guaranteed to be completely secure, so please share only what is needed.</p>
+
+<h2>10. Your rights and choices</h2>
+<p>You may ask us to:</p>
+<ul>
+<li>tell you what personal information we hold about you;</li>
+<li>correct information that is inaccurate or out of date;</li>
+<li>delete your information, or stop us using it, where we no longer need it for a legitimate purpose;</li>
+<li>stop contacting you about an enquiry.</li>
+</ul>
+<p>We handle personal information in line with the data protection laws that apply to us in Zimbabwe, including the Cyber and Data Protection Act. If you believe your information has been mishandled, please contact us first so we can put it right.</p>
+
+<h2>11. Contact us about privacy</h2>
+<p>To make a request or ask a question about this policy, contact us using any of the details below, or use our <a href="{{ url_for('main.contact') }}">contact form</a>.</p>
+<ul class="policy-contact">
+{% if config.COMPANY_ADDRESS %}<li><strong>Address:</strong> {{ config.COMPANY_ADDRESS }}</li>{% endif %}
+{% for phone in config.COMPANY_PHONES %}<li><strong>Phone:</strong> <a href="tel:{{ phone|replace(' ', '') }}">{{ phone }}</a></li>{% endfor %}
+{% if config.WHATSAPP_NUMBER %}<li><strong>WhatsApp:</strong> <a href="https://wa.me/{{ config.WHATSAPP_NUMBER }}" target="_blank" rel="noopener">Message us on WhatsApp</a></li>{% endif %}
+{% if config.FACEBOOK_URL %}<li><strong>Facebook:</strong> <a href="{{ config.FACEBOOK_URL }}" target="_blank" rel="noopener">Our Facebook page</a></li>{% endif %}
+{% if config.COMPANY_EMAIL %}<li><strong>Email:</strong> <a href="mailto:{{ config.COMPANY_EMAIL }}">{{ config.COMPANY_EMAIL }}</a></li>{% endif %}
+</ul>
+
+<h2>12. Changes to this policy</h2>
+<p>We may update this policy from time to time, for example if we add new features to the website. The "last updated" date at the top shows when it last changed. Continued use of the website after an update means you accept the revised policy.</p>
+<p class="small-note">This policy is a general statement of how this website handles personal information. The company should have it reviewed by a legal adviser to confirm it matches its actual practices and the laws that apply to it.</p>
+</div></section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} | Atherton Construction Company{% endblock %}
+{% block content %}
+<section class="page-hero compact-hero"><div class="container"><p class="eyebrow">{{ project.category }}{% if project.location %} / {{ project.location }}{% endif %}</p><h1>{{ project.title }}</h1><p>{{ project.summary }}</p></div></section>
+<section class="section-pad"><div class="container">
+  <div class="detail-image">{% if project.image_filename %}<img src="{{ url_for('static', filename='uploads/' ~ project.image_filename) }}" alt="{{ project.title }}">{% else %}<div class="image-placeholder"><span>ATHERTON / PROJECT</span></div>{% endif %}</div>
+  <div class="project-detail-grid"><div><p class="eyebrow">PROJECT OVERVIEW</p><h2>Designed around<br><span>the requirements.</span></h2></div><div class="prose"><p>{{ project.description or project.summary }}</p><p class="small-note">Project information shown here should be verified and approved by Atherton Construction Company before public use.</p></div></div>
+  <div class="project-facts"><div><span>Category</span><strong>{{ project.category }}</strong></div><div><span>Location</span><strong>{{ project.location or 'To be confirmed' }}</strong></div><div><span>Status</span><strong>{{ project.status }}</strong></div><div><span>Year</span><strong>{{ project.completion_year or '—' }}</strong></div></div>
+  <a class="btn btn-teal" href="{{ url_for('main.quote') }}">Request a similar project ↗</a>
+  {% if related %}<div class="related-projects"><h2>Related projects</h2><div class="project-grid">{% for item in related %}<a class="project-card" href="{{ url_for('main.project_detail', project_id=item.id) }}"><div class="project-image">{% if item.image_filename %}<img src="{{ url_for('static', filename='uploads/' ~ item.image_filename) }}" alt="{{ item.title }}" loading="lazy">{% else %}<div class="image-placeholder"><span>ATHERTON / PROJECT</span></div>{% endif %}</div><h3>{{ item.title }}</h3><p>{{ item.summary }}</p></a>{% endfor %}</div></div>{% endif %}
+</div></section>
+{% endblock %}

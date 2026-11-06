@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Admin Login | Atherton Construction Company{% endblock %}
+{% block content %}<section class="admin-login-wrap"><form class="form-card admin-login" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><p class="eyebrow">SECURE ADMIN AREA</p><h1>Administrator<br><span>sign in.</span></h1><label>Username<input name="username" required autocomplete="username" autofocus></label><label>Password<input type="password" name="password" required autocomplete="current-password"></label><button class="btn btn-teal" type="submit">Sign in ↗</button><p class="form-note">First time here? The default account is set up by the installer — see the README, then change the password.</p></form></section>{% endblock %}

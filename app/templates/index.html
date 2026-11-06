@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Atherton Construction Company | Building Today, Shaping Tomorrow{% endblock %}
+{% block meta_description %}Explore Atherton Construction Company services, construction projects, and request a quotation for your next build.{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-photo" role="img" aria-label="Modern architectural building"></div>
+  <div class="hero-shade"></div>
+  <div class="container hero-content">
+    <p class="eyebrow eyebrow-light"><span></span> ATHERTON CONSTRUCTION COMPANY</p>
+    <h1>Building today.<br><em>Shaping tomorrow.</em></h1>
+    <p class="hero-copy">We bring ideas to life through thoughtful construction, professional coordination, and a commitment to quality that stands the test of time.</p>
+    <div class="hero-actions"><a class="btn btn-gold" href="{{ url_for('main.services') }}">Explore our services <span>↗</span></a><a class="btn btn-outline-light" href="{{ url_for('main.quote') }}">Request a quote</a></div>
+    <div class="hero-note"><span class="note-line"></span> Quality construction. Reliable service. Lasting value.</div>
+  </div>
+  <div class="hero-index"><span>01</span><i></i><span>04</span></div>
+</section>
+
+<section class="intro section-pad">
+  <div class="container intro-grid">
+    <div class="section-label"><span>01 / WHO WE ARE</span><div class="label-line"></div></div>
+    <div class="intro-main">
+      <p class="eyebrow">A foundation for what's next</p>
+      <h2>Building with purpose.<br><span>Delivering with excellence.</span></h2>
+      <div class="intro-bottom"><p>Atherton Construction Company is focused on construction solutions that combine quality workmanship, thoughtful planning, and attention to detail. We work to create durable, functional spaces shaped around each client's goals.</p><a class="text-link" href="{{ url_for('main.about') }}">Get to know us <span>↗</span></a></div>
+    </div>
+  </div>
+  <div class="container value-row">
+    <article class="value-item"><span class="value-number">01</span><div><h3>Quality workmanship</h3><p>Careful attention to the details that make a lasting difference.</p></div><span class="value-mark">↗</span></article>
+    <article class="value-item"><span class="value-number">02</span><div><h3>Reliable delivery</h3><p>Clear coordination and a considered approach to each project.</p></div><span class="value-mark">↗</span></article>
+    <article class="value-item"><span class="value-number">03</span><div><h3>Client-focused service</h3><p>Working collaboratively from the first conversation to handover.</p></div><span class="value-mark">↗</span></article>
+  </div>
+</section>
+
+<section class="services-section section-pad section-muted">
+  <div class="container">
+    <div class="section-heading"><div><p class="eyebrow">02 / WHAT WE DO</p><h2>Construction solutions<br><span>built around you.</span></h2></div><a class="text-link" href="{{ url_for('main.services') }}">View all services <span>↗</span></a></div>
+    <div class="service-grid">
+      {% for service in services %}
+      <article class="service-card">
+        <div class="service-photo">{% if service.image %}<img src="{{ url_for('static', filename='images/services/' ~ service.image) }}" alt="{{ service.title }}" loading="lazy">{% endif %}</div>
+        <div class="service-icon">{{ service.icon }}</div><span class="service-index">0{{ loop.index }}</span>
+        <h3>{{ service.title }}</h3><p>{{ service.text }}</p><a href="{{ url_for('main.services') }}" aria-label="Learn more about {{ service.title }}" class="card-arrow">↗</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="projects-section section-pad">
+  <div class="container">
+    <div class="section-heading"><div><p class="eyebrow">03 / SELECTED WORK</p><h2>Our work speaks<br><span>for itself.</span></h2></div><a class="text-link" href="{{ url_for('main.projects') }}">Explore projects <span>↗</span></a></div>
+    {% if projects %}
+    <div class="project-grid home-projects">
+      {% for project in projects %}
+      <a class="project-card" href="{{ url_for('main.project_detail', project_id=project.id) }}">
+        <div class="project-image">
+          {% if project.image_filename %}<img src="{{ url_for('static', filename='uploads/' ~ project.image_filename) }}" alt="{{ project.title }}" loading="lazy">
+          {% else %}<div class="image-placeholder"><span>ATHERTON / PROJECT {{ "%02d"|format(loop.index) }}</span></div>{% endif %}
+          <span class="project-arrow">↗</span>
+        </div>
+        <div class="project-meta"><span>{{ project.category }}</span>{% if project.location %}<span>{{ project.location }}</span>{% endif %}</div>
+        <h3>{{ project.title }}</h3><p>{{ project.summary }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-projects"><div class="empty-mark">A.</div><div><h3>Every great project starts with a conversation.</h3><p>Project showcases will appear here as the company adds its approved portfolio through the admin dashboard.</p></div><a class="text-link" href="{{ url_for('main.quote') }}">Discuss your project ↗</a></div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="why-image" role="img" aria-label="Atherton Construction Company team laying bricks on site"></div>
+  <div class="why-content">
+    <p class="eyebrow eyebrow-light">04 / THE ATHERTON APPROACH</p><h2>Good work is built<br>on <em>good foundations.</em></h2>
+    <p class="why-lead">Every project deserves clear communication, thoughtful planning, and an unwavering focus on the agreed scope.</p>
+    <ul class="check-list"><li>Commitment to quality</li><li>Professional project coordination</li><li>Attention to detail</li><li>Reliable communication</li><li>Focus on safety and workmanship</li></ul>
+    <a class="btn btn-gold" href="{{ url_for('main.about') }}">Why Atherton <span>↗</span></a>
+  </div>
+</section>
+
+<section class="process-section section-pad">
+  <div class="container"><div class="section-heading"><div><p class="eyebrow">05 / HOW WE WORK</p><h2>From concept<br><span>to completion.</span></h2></div><p class="heading-side-copy">A clear process helps keep everyone aligned from the first conversation to project handover.</p></div>
+    <div class="process-grid">
+      <article><span>01</span><div class="process-line"></div><h3>Consultation</h3><p>We discuss your needs, objectives, and expectations.</p></article>
+      <article><span>02</span><div class="process-line"></div><h3>Planning & estimation</h3><p>We review the scope and prepare relevant plans, estimates, and schedules.</p></article>
+      <article><span>03</span><div class="process-line"></div><h3>Construction</h3><p>We coordinate agreed activities with attention to progress and quality.</p></article>
+      <article><span>04</span><div class="process-line"></div><h3>Project handover</h3><p>We review the completed work and coordinate the agreed handover.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section"><div class="container cta-inner"><div><p class="eyebrow eyebrow-light">YOUR NEXT CHAPTER STARTS HERE</p><h2>Ready to build<br><em>something great?</em></h2></div><div class="cta-right"><p>Tell us about your project. Let's talk through your requirements and explore the next steps together.</p><a class="btn btn-gold" href="{{ url_for('main.quote') }}">Start a conversation <span>↗</span></a></div></div><div class="cta-decoration">A.</div></section>
+{% endblock %}

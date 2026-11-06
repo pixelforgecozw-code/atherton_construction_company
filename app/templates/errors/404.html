@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found | Atherton Construction Company{% endblock %}
+{% block content %}<section class="empty-state error-state"><span class="empty-mark">404</span><h1>We couldn't find that page.</h1><p>The page may have moved or the address may be incorrect.</p><a class="btn btn-teal" href="{{ url_for('main.home') }}">Back to homepage ↗</a></section>{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Our Team | Atherton Construction Company{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">THE PEOPLE BEHIND THE WORK</p><h1>Good projects start<br><em>with good people.</em></h1><p>Construction depends on collaboration, communication, and people who take responsibility for the work.</p></div></section>
+<section class="section-pad"><div class="container team-placeholder"><div class="team-photo"><img src="{{ url_for('static', filename='images/team-on-site.jpg') }}" alt="The Atherton Construction Company team at work on a building site" loading="lazy"></div><div><p class="eyebrow">MEET THE ATHERTON TEAM</p><h2>Our team profiles<br><span>will be added here.</span></h2><p>Official team names, photographs, roles, and biographies can be added once approved by the company. We don't publish invented identities or qualifications.</p><a class="text-link" href="{{ url_for('main.contact') }}">Get in touch <span>↗</span></a></div></div></section>
+{% endblock %}
